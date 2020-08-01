@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name" translatable="false">Visitor Directory</string>
+    <string name="title_activity_home" translatable="false">HomeActivity</string>
+    <string name="welcome_content" translatable="false">Visitor Directory \n Keep Note Book Away</string>
+
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
+    <string name="empty" translatable="false">(Empty)</string>
+    <string name="export">Share</string>
+
+    <!-- CSV header Values -->
+    <string name="header_date" translatable="false">Date</string>
+    <string name="header_name" translatable="false">Name</string>
+    <string name="header_temperature" translatable="false">Temperature</string>
+    <string name="header_mobile" translatable="false">Mobile</string>
+    <string name="header_area" translatable="false">Area</string>
+    <string name="header_address" translatable="false">Address</string>
+
+    <string name="entry_name">Enter Name</string>
+    <string name="entry_phone">Enter Mobile Number</string>
+    <string name="entry_temperature">Enter Temperature (°F)</string>
+    <string name="entry_area">Enter Area</string>
+    <string name="entry_address">Enter Address</string>
+    <string name="title_entry">Entry</string>
+    <string name="title_history">History</string>
+    <string name="title_more">More</string>
+    <string name="version">Version</string>
+
+
+    <string name="data">Data</string>
+    <string name="settings_delete_data">Delete History</string>
+    <string name="settings_secure_data">Enable Password Protection For Data</string>
+    <string name="settings_change_password">Change Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="share_via">Choose</string>
+    <string name="download">Save to Downloads</string>
+    <string name="send">Send</string>
+    <string name="degree">&#xb0; F</string>
+
+
+    <string name="about_title" translation_description="Title for the 'About' tab that shows miscellaneous info.">About</string>
+    <string name="settings_tos" translation_description="Open link to terms of service.">Terms of service</string>
+    <string name="settings_privacy_policy" translation_description="Open link to privacy policy.">Privacy policy</string>
+    <string name="settings_oss_licenses" translation_description="Open link to open source licenses.">Open sources licenses</string>
+
+</resources>

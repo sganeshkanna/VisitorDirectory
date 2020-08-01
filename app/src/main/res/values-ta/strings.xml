@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name" translatable="false">மக்கள் உள்ளீடுகள்</string>
+    <string name="title_activity_home" translatable="false">HomeActivity</string>
+
+
+    <string name="submit">சமர்ப்பிக்கவும்</string>
+    <string name="confirm" >உறுதிப்படுத்தவும்</string>
+    <string name="export">பகிர்</string>
+
+
+    <string name="entry_name">பெயரை உள்ளிடுக</string>
+    <string name="entry_phone">மொபைல் எண்ணை உள்ளிடவும்</string>
+    <string name="entry_temperature">வெப்பநிலையை உள்ளிடவும் (°F)</string>
+    <string name="entry_area">வட்டாரத்தை உள்ளிடவும்</string>
+    <string name="entry_address">முகவரியை உள்ளிடவும்</string>
+    <string name="title_entry">உள்ளீடு</string>
+    <string name="title_history">சேமித்த உள்ளீடுகள்</string>
+    <string name="title_more">மேலும்</string>
+    <string name="version">பதிப்பு</string>
+
+
+    <string name="data">தகவல்கள்</string>
+    <string name="settings_delete_data">உள்ளீடுகளை நீக்கு</string>
+    <string name="settings_secure_data">தரவுக்கான கடவுச்சொல் பாதுகாப்பை இயக்கு</string>
+    <string name="settings_change_password">கடவுச்சொல்லை மாற்று</string>
+    <string name="current_password">தற்போதைய கடவுச்சொல்</string>
+    <string name="new_password">புதிய கடவுச்சொல்</string>
+    <string name="confirm_password">கடவுச்சொல்லை உறுதிப்படுத்தவும்</string>
+    <string name="save">சேமி</string>
+    <string name="cancel">Cancel</string>
+    <string name="share_via">தேர்வு செய்யவும்</string>
+    <string name="download">பதிவிறக்கங்களில் சேமிக்கவும்</string>
+    <string name="send">அனுப்புக</string>
+    <string name="degree">&#xb0; F</string>
+
+
+
+    <string name="about_title" translation_description="Title for the 'About' tab that shows miscellaneous info.">பற்றி</string>
+    <string name="settings_tos" translation_description="Open link to terms of service.">சேவை விதிமுறைகள்</string>
+    <string name="settings_privacy_policy" translation_description="Open link to privacy policy.">தனியுரிமைக் கொள்கை</string>
+    <string name="settings_oss_licenses" translation_description="Open link to open source licenses.">திறந்த மூல உரிமங்கள்</string>
+
+</resources>

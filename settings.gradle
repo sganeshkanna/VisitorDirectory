@@ -1,0 +1,3 @@
+include ':reports'
+include ':app'
+rootProject.name = "ShopperDirectory"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_password_not_match" >Password not matches.</string>
+    <string name="error_not_valid_password">Enter valid password.</string>
+    <string name="error_invalid_password">Invalid Password.</string>
+
+
+
+
+
+
+    <string name="message_password_saved">Password saved</string>
+    <string name="message_record_deleted" >Cleared Records!</string>
+</resources>
