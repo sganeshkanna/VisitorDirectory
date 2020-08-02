@@ -15,8 +15,13 @@
  */
 package com.mytown.sd.entry
 
+import android.database.Observable
+import android.util.Log
 import androidx.annotation.WorkerThread
+import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.LiveData
+import com.mytown.sd.persistence.Suggestion
+import com.mytown.sd.persistence.SuggestionDao
 import com.mytown.sd.persistence.User
 import com.mytown.sd.persistence.UserDao
 
@@ -24,11 +29,14 @@ import com.mytown.sd.persistence.UserDao
  * Abstracted Repository as promoted by the Architecture Guide.
  * https://developer.android.com/topic/libraries/architecture/guide.html
  */
-class UserRepository(private val userDao: UserDao) {
+class UserRepository(private val userDao: UserDao,private val suggestionDao: SuggestionDao) {
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
     val allUsers: LiveData<List<User>> = userDao.all
+
+
+    var suggestion: ObservableArrayList<Suggestion> = ObservableArrayList<Suggestion>()
 
     // You must call this on a non-UI thread or your app will crash. So we're making this a
     // suspend function so the caller methods know this.
@@ -39,6 +47,25 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun insert(user: User) {
         user.timeStamp = System.currentTimeMillis()
         userDao.insert(user)
+        insertSuggestion(user)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun getSuggestion(mobileNumber: String)  {
+        suggestion.clear()
+        suggestion.addAll(suggestionDao.loadByMobile(mobileNumber))
+        Log.i("TAG","Suggestions")
+    }
+
+
+    private fun insertSuggestion(user: User){
+        val suggestion = Suggestion()
+        suggestion.name = user.name
+        suggestion.mobileNumber = user.mobileNumber
+        suggestion.area = user.area
+        suggestion.address = user.address
+        suggestionDao.insert(suggestion)
     }
 
     @Suppress("RedundantSuspendModifier")

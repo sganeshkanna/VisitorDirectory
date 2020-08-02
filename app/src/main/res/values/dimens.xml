@@ -1,16 +1,16 @@
 <resources>
-    <integer name="source">1</integer>
+<!--    <integer name="source">1</integer>-->
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="appbar_padding">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="appbar_padding_top">8dp</dimen>
+<!--    <dimen name="activity_horizontal_margin">16dp</dimen>-->
+<!--    <dimen name="activity_vertical_margin">16dp</dimen>-->
+<!--    <dimen name="appbar_padding">16dp</dimen>-->
+
+<!--    <dimen name="appbar_padding_top">8dp</dimen>-->
 
     <dimen name="very_small_padding">4dp</dimen>
     <dimen name="small_padding">8dp</dimen>
-    <dimen name="big_padding">16dp</dimen>
-    <dimen name="min_height">48dp</dimen>
+<!--    <dimen name="big_padding">16dp</dimen>-->
+<!--    <dimen name="min_height">48dp</dimen>-->
     <dimen name="tab_bar_height">60dp</dimen>
 
 
@@ -21,17 +21,13 @@
 
     <!-- Common dimensions -->
     <dimen name="margin_normal">16dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
+<!--    <dimen name="margin_small">8dp</dimen>-->
     <dimen name="margin_large">32dp</dimen>
     <dimen name="spacing_normal">8dp</dimen>
-    <dimen name="spacing_micro">4dp</dimen>
+<!--    <dimen name="spacing_micro">4dp</dimen>-->
 
-    <dimen name="text_size_h1">22sp</dimen>
-    <dimen name="text_size_h2">20sp</dimen>
-    <dimen name="text_size_h3">18sp</dimen>
+<!--    <dimen name="text_size_h1">22sp</dimen>-->
+<!--    <dimen name="text_size_h2">20sp</dimen>-->
+<!--    <dimen name="text_size_h3">18sp</dimen>-->
 
-    <dimen name="a11y_min_touch_target">48dp</dimen>
-
-    <dimen name="bottom_sheet_elevation">8dp</dimen>
-    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
 </resources>

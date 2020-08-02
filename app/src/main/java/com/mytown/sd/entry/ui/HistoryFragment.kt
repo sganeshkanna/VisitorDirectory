@@ -16,7 +16,7 @@ import com.mytown.sd.entry.UserViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
 /**
- * A placeholder fragment containing a simple view.
+ *
  */
 class HistoryFragment : Fragment() {
 
@@ -25,14 +25,12 @@ class HistoryFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
@@ -41,46 +39,22 @@ class HistoryFragment : Fragment() {
         val adapter = UserListAdapter(requireContext())
         userListView.layoutManager = LinearLayoutManager(requireContext())
         userListView.adapter = adapter
-
-
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        userViewModel.allWords.observe(viewLifecycleOwner, Observer { words ->
-            // Update the cached copy of the words in the adapter.
-            words?.let {
+        userViewModel.allUsers.observe(viewLifecycleOwner, Observer { list ->
+            // Update the cached copy of the list in the adapter.
+            list?.let {
                 adapter.setUsers(it)
             }
         })
     }
 
-    companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private const val ARG_SECTION_NUMBER = "section_number"
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        @JvmStatic
-        fun newInstance(sectionNumber: Int): HistoryFragment {
-            return HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
-                }
-            }
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         activity?.let {
-            (it as HomeActivity)?.onHistoryVisibilityChanged(true, this)
+            (it as HomeActivity).onHistoryVisibilityChanged(true, this)
         }
-
     }
 
 

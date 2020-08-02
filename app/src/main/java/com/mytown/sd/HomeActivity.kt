@@ -1,11 +1,7 @@
 package com.mytown.sd
 
-import android.app.DownloadManager
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -14,7 +10,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.content.FileProvider
-import androidx.documentfile.provider.DocumentFile
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -88,11 +83,6 @@ class HomeActivity : VisitorActivity() {
         return true
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
-
     private var job = SupervisorJob()
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
     private fun prepareReport() {
@@ -104,8 +94,8 @@ class HomeActivity : VisitorActivity() {
             }
         }, { path ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                historyFragment?.showOption{option->
-                    when(option){
+                historyFragment?.showOption { option ->
+                    when (option) {
                         1 -> {
                             saveToDownloads(path as String)
                         }
@@ -114,17 +104,17 @@ class HomeActivity : VisitorActivity() {
                         }
                     }
                 }
-            }else{
+            } else {
                 shareFile(path as String)
             }
 
-            if(BuildConfig.DEBUG) {
+            if (BuildConfig.DEBUG) {
                 Toast.makeText(this, "Path $path", Toast.LENGTH_LONG).show()
             }
         })
     }
 
-    private fun saveToDownloads(path:String){
+    private fun saveToDownloads(path: String) {
         if (!Utils.allPermissionsGranted(this)) {
             Utils.requestRuntimePermissions(this)
             return
@@ -135,24 +125,25 @@ class HomeActivity : VisitorActivity() {
                 .packageName.toString() + ".provider", fileWithinMyDir
         )
 
-            // You can add more columns.. Complete list of columns can be found at
-            // https://developer.android.com/reference/android/provider/MediaStore.Downloads
-            val contentValues =  ContentValues()
-            contentValues.put(MediaStore.Downloads.TITLE, fileWithinMyDir.name)
-            contentValues.put(MediaStore.Downloads.DISPLAY_NAME,fileWithinMyDir.name)
-            contentValues.put(MediaStore.Downloads.MIME_TYPE,"text/csv")
-            contentValues.put(MediaStore.Downloads.SIZE,fileWithinMyDir.length())
+        // You can add more columns.. Complete list of columns can be found at
+        // https://developer.android.com/reference/android/provider/MediaStore.Downloads
+        val contentValues = ContentValues()
+        contentValues.put(MediaStore.Downloads.TITLE, fileWithinMyDir.name)
+        contentValues.put(MediaStore.Downloads.DISPLAY_NAME, fileWithinMyDir.name)
+        contentValues.put(MediaStore.Downloads.MIME_TYPE, "text/csv")
+        contentValues.put(MediaStore.Downloads.SIZE, fileWithinMyDir.length())
 
-            // If you downloaded to a specific folder inside "Downloads" folder
-            contentValues.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + File.separator + "Visitor")
+        // If you downloaded to a specific folder inside "Downloads" folder
+        contentValues.put(
+            MediaStore.Downloads.RELATIVE_PATH,
+            Environment.DIRECTORY_DOWNLOADS + File.separator + "Visitor"
+        )
 
-            // Insert into the database
-            val database = contentResolver
+        // Insert into the database
+        val database = contentResolver
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             database.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
         }
-
-
     }
 
     private fun shareFile(path: String) {
@@ -162,7 +153,6 @@ class HomeActivity : VisitorActivity() {
             this, applicationContext
                 .packageName.toString() + ".provider", fileWithinMyDir
         )
-
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.type = "application/octet-stream"
         shareIntent.putExtra(Intent.EXTRA_STREAM, uri)
@@ -175,12 +165,11 @@ class HomeActivity : VisitorActivity() {
     }
 
     private var historyFragment: HistoryFragment? = null
-    fun onHistoryVisibilityChanged(isVisible: Boolean, fragment: HistoryFragment? = null){
+    fun onHistoryVisibilityChanged(isVisible: Boolean, fragment: HistoryFragment? = null) {
         shareMenuItem?.isVisible = isVisible
         fragment?.let {
             historyFragment = it
         }
-
     }
 
 }

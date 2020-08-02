@@ -30,10 +30,11 @@ import kotlinx.coroutines.launch
  * This is the backend. The database. This used to be done by the OpenHelper.
  * The fact that this has very few comments emphasizes its coolness.
  */
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, Suggestion::class], version = Config.DATABASE_VERSION)
 abstract class VisitorDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao?
+    abstract fun suggestionDao(): SuggestionDao?
 
     companion object {
         @Volatile
@@ -83,7 +84,7 @@ abstract class VisitorDatabase : RoomDatabase() {
          * Populate the database in a new coroutine.
          * If you want to start with more words, just add them.
          */
-        fun populateDatabase(wordDao: UserDao) {
+        fun populateDatabase(userDao: UserDao) {
 
         }
     }

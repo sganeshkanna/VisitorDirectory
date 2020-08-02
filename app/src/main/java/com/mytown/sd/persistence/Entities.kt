@@ -8,7 +8,6 @@ import com.mytown.reports.Report
 import com.mytown.sd.R
 import com.mytown.sd.extension.getCSVString
 import com.mytown.sd.extension.toFormattedString
-import java.security.AccessControlContext
 
 
 @Entity
@@ -46,7 +45,7 @@ class User : Report {
                 "${context.getString(R.string.header_mobile)}," +
                 "${context.getString(R.string.header_temperature)}," +
                 "${context.getString(R.string.header_area)}," +
-                "${context.getString(R.string.header_address)}"
+                context.getString(R.string.header_address)
     }
 
     override fun getRow(): String {
@@ -54,4 +53,30 @@ class User : Report {
         return "$dateString,${name!!.getCSVString()},${mobileNumber!!.getCSVString()}," +
                 "${temperature!!.getCSVString()},${area!!.getCSVString()},${address!!.getCSVString()}"
     }
+}
+
+@Entity
+class Suggestion {
+    @PrimaryKey(autoGenerate = true)
+    var sid = 0
+
+    @ColumnInfo(name = "name")
+    var name: String? = null
+
+    @ColumnInfo(name = "mobile_number")
+    var mobileNumber: String? = null
+
+    @ColumnInfo(name = "address")
+    var address: String? = null
+
+    @ColumnInfo(name = "area")
+    var area: String? = null
+
+
+    @ColumnInfo(name = "temp_1")
+    var temp_1: String? = null
+
+    @ColumnInfo(name = "temp_2")
+    var temp_2: String? = null
+
 }

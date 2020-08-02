@@ -17,10 +17,11 @@
 package com.mytown.sd.entry
 
 import android.app.Application
+import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.mytown.sd.entry.UserRepository
+import com.mytown.sd.persistence.Suggestion
 import com.mytown.sd.persistence.User
 import com.mytown.sd.persistence.VisitorDatabase
 import kotlinx.coroutines.Dispatchers
@@ -38,12 +39,15 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
-    val allWords: LiveData<List<User>>
+    val allUsers: LiveData<List<User>>
+    var suggestions: ObservableArrayList<Suggestion>
 
     init {
         val wordsDao = VisitorDatabase.getDatabase(application, viewModelScope).userDao()
-        repository = UserRepository(wordsDao!!)
-        allWords = repository.allUsers
+        val suggestionDao = VisitorDatabase.getDatabase(application, viewModelScope).suggestionDao()
+        repository = UserRepository(wordsDao!!,suggestionDao!!)
+        allUsers = repository.allUsers
+        suggestions = repository.suggestion
     }
 
     /**
@@ -53,6 +57,9 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         repository.insert(user)
     }
 
+    fun getSuggestion(mobileNumber: String) = viewModelScope.launch(Dispatchers.IO) {
+        repository.getSuggestion(mobileNumber)
+    }
     fun deleteRecords() {
         repository.deleteRecords()
     }

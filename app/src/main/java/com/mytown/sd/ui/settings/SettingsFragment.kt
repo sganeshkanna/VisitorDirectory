@@ -66,9 +66,6 @@ class SettingsFragment : Fragment() {
         open_source_license.setOnClickListener {
             startActivity(Intent(activity, OssLicensesMenuActivity::class.java))
         }
-
-
-
     }
     private fun deleteAll(){
         CoroutineHelper.doInBackground({
@@ -103,7 +100,6 @@ class SettingsFragment : Fragment() {
 
         val currentPassword =
             dialogView.findViewById<View>(R.id.currentPassword) as EditText
-
 
         val newPassword =
             dialogView.findViewById<View>(R.id.newPassword) as EditText
@@ -221,8 +217,7 @@ class SettingsFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity?.let {
-            (it as HomeActivity)?.onHistoryVisibilityChanged(false)
+            (it as HomeActivity).onHistoryVisibilityChanged(false)
         }
-
     }
 }

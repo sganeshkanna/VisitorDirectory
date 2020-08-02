@@ -59,7 +59,7 @@
         android:layout_marginTop="@dimen/very_small_padding"
         android:hint="@string/entry_area">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/areaField"
             android:layout_width="match_parent"
             android:inputType="text"
